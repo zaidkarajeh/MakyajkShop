@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd ShopApp && npm install && ng build --configuration production",
+  "buildCommand": "cd ShopApp && npm install && npm run build",
   "outputDirectory": "ShopApp/dist/CoffeeApp",
   "installCommand": "cd ShopApp && npm install"
 }
