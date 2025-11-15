@@ -1,0 +1,52 @@
+<form [formGroup]="loginForm" 
+      class="custom-login-form"
+      [ngClass]="{'shake': shake}">
+
+  <h2 class="form-title">Login</h2>
+
+  <!-- Email -->
+  <div class="form-group">
+    <label for="email">Email</label>
+    <div class="input-wrapper">
+      <i class="fa-solid fa-envelope icon"></i>
+      <input id="email" 
+             type="text" 
+             formControlName="txtusername" 
+             placeholder="Enter your email"
+             [ngClass]="{'error-input': loginError}">
+    </div>
+    <div *ngIf="loginForm.controls['txtusername'].touched && loginForm.hasError('required','txtusername')" class="error">
+      Please enter your email
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div class="form-group">
+    <label for="userPassword">Password</label>
+    <div class="input-wrapper password-wrapper">
+      <i class="fa-solid fa-lock password-icon"></i>
+      <input [type]="showUserPassword ? 'text' : 'password'"
+             id="userPassword" 
+             formControlName="txtPassword" 
+             placeholder="Enter your password"
+             [ngClass]="{'error-input': loginError}">
+      <i class="fa-solid fa-eye password-toggle-icon" (click)="toggleUserPassword()"></i>
+    </div>
+    <div *ngIf="loginForm.controls['txtPassword'].touched && loginForm.controls['txtPassword'].hasError('required')" class="error">
+      Please enter your password
+    </div>
+  </div>
+
+  <!-- Login Button -->
+  <button type="button" class="btn-login" (click)="login()">Login</button>
+
+  <!-- Error Message -->
+  <div *ngIf="loginError" class="form-error-message">
+    {{ loginError }}
+  </div>
+
+  <div class="text-center mt-3">
+    <a class="text-decoration-none" style="cursor: pointer;" (click)="goToCreateAccount()">Create Account</a>
+  </div>
+
+</form>

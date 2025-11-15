@@ -1,0 +1,154 @@
+/* Carousel Images */
+#carouselExampleCaptions .carousel-item img {
+  height: 600px;
+  object-fit: cover;
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon,
+.carousel-indicators button {
+  filter: invert(1);
+}
+
+/* Carousel Item */
+.carousel-item {
+  position: relative;
+  background-color: transparent;
+}
+
+/* Main Content Padding */
+.main-content {
+  padding-top: 110px;
+}
+
+/* Info Box */
+.info-box {
+  width: 400px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  position: absolute;
+  top: 140px;
+  left: 200px;
+  z-index: 10;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Intro Text */
+.intro-text {
+  color: #ff4081;
+  font-size: 20px;
+  margin: 0;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  position: relative;
+  bottom: 110px;
+  right: 60px;
+}
+
+/* Brand Name */
+.brand-name {
+  color: #000000;
+  font-size: 50px;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  position: relative;
+  bottom: 100px;
+  right: 60px;
+}
+
+/* Button Light */
+.btn-light {
+  background-color: rgb(228, 87, 87);
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  bottom: 100px;
+  right: 60px;
+}
+
+/* Button Hover */
+.btn-light:hover {
+  background-color: rgb(243, 18, 18);
+}
+
+/* Images */
+.img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+  margin: 10px;
+  position: relative;
+  left: 120px;
+  top: 60px;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 767px) {
+  /* Carousel Image */
+  #carouselExampleCaptions .carousel-item img {
+    height: 300px;
+  }
+
+  /* Info Box */
+  .info-box {
+    width: 250px;
+    height: 180px;
+    top: 50px;
+    left: 60px;
+    padding: 8px;
+  }
+
+  /* Intro Text */
+  .intro-text {
+    font-size: 14px;
+    bottom: 70px;
+    right: 30px;
+  }
+
+  /* Brand Name */
+  .brand-name {
+    font-size: 24px;
+    bottom: 50px;
+    right: 30px;
+  }
+
+  /* Button Light */
+  .btn-light {
+    font-size: 14px;
+    padding: 8px 16px;
+    bottom: 50px;
+    right: 30px;
+  }
+
+  /* Images */
+  .img {
+    width: 100px;
+    height: 120px;
+    left: 80px;
+    top: 40px;
+  }
+
+  /* Carousel Controls */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,0 +1,155 @@
+<!-- Navbar: Top navigation bar -->
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <!-- Left: Brand Name -->
+    <div class="left-div ms-4">
+      <span class="navbar-text-left fs-4 fw-bold" (click)="goHome()" style="cursor: pointer;">
+        MAKYAJK
+      </span>
+    </div>
+
+    <!-- Right: Secure Checkout Info -->
+    <div class="right-div me-4">
+      <span class="navbar-text-right">Secure Checkout</span>
+      <img src="assets/images/SecureCheckout.png" alt="">
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content: Cart Page -->
+<div class="main-content cart-page d-flex">
+
+  <!-- Left Section: Cart Items List -->
+  <div class="cart-left flex-grow-1">
+    <!-- Cart Count -->
+    <div class="cart-count-container">
+      <div class="cart-count">
+        <span>ALL ITEMS({{ cartItems.length }})</span>
+      </div>
+    </div>
+
+    <!-- Empty Cart Message -->
+    <div class="cart-count-container mt-3" *ngIf="cartItems.length === 0">
+      <div class="cart-count">🛒 Your cart is empty</div>
+    </div>
+
+    <!-- Cart Items Loop -->
+    <div *ngFor="let item of cartItems" class="cart-item d-flex align-items-center mb-2 mt-3">
+      <!-- Product Image -->
+      <div class="product me-3">
+        <img 
+          *ngIf="item.imageUrls && item.imageUrls.length > 0"
+          [src]="item.imageUrls[0].startsWith('http') ? item.imageUrls[0] : 'https://localhost:44333/images/' + item.imageUrls[0]" 
+          alt="{{item.name}}" 
+          class="product-img"
+        >
+      </div>
+
+      <!-- Product Details -->
+      <div class="product-details flex-grow-1 d-flex flex-column pt-5">
+        <!-- Product Description -->
+        <div class="d-flex justify-content-between mb-1">
+          <span class="single-line-description" (click)="goToDetails(item.id)">
+            {{ item.description }}
+          </span>
+        </div>
+
+        <!-- Category and Quantity Controls -->
+        <div class="d-flex justify-content-between">
+          <span class="item-price">Category: {{ item.category }}</span>
+          <div class="btn-group d-flex align-items-center text-center">
+            <button class="btn" (click)="decreaseQuantity(item)">−</button>
+            <span class="fw-bold mx-1">{{ item.quantity }}</span>
+            <button class="btn" (click)="increaseQuantity(item)">+</button>
+          </div>
+        </div>
+
+        <!-- Price and Remove Button -->
+        <div class="remove-controls d-flex justify-content-between">
+          <p class="mb-0 ms-2">
+              <span class="fs-3 fw-bold">{{ item.price | number:'1.0-0' }}</span>
+              <span class="fs-6">.{{ (item.price % 1) * 100| number:'2.0-0' }} JOD</span>
+            </p>
+          <img src="assets/images/deleteitem.png" alt="Remove item" class="remove-item-btn" (click)="removeItem(item.id)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spacer between Left and Right -->
+  <div class="cart-space"></div>
+
+  <!-- Right Section: Order Summary & Payment -->
+  <div class="cart-right">
+    <!-- Order Summary Box -->
+    <div class="right-box mb-3">
+      <h6 class="fw-bold">Order Summary</h6>
+
+      <!-- Product Images in Order Summary -->
+      <div class="ordered-images d-flex flex-wrap mb-3">
+        <div *ngFor="let item of cartItems" class="ordered-item me-2 mb-2">
+          <img
+            *ngIf="item.imageUrls && item.imageUrls.length > 0"
+            [src]="item.imageUrls[0].startsWith('http') ? item.imageUrls[0] : 'https://localhost:44333/images/' + item.imageUrls[0]"
+            alt="{{ item.name }}"
+            class="ordered-img" 
+            style="width: 50px; height: 50px; object-fit:scale-down;"
+          >
+        </div>
+      </div>
+
+      <!-- Subtotal -->
+      <div class="price-line">
+        <span>Subtotal:</span>
+        <span>{{ total | number:'1.2-2' }} JOD</span>
+      </div>
+
+      <!-- Discount -->
+      <div class="price-line" style="color: red;">
+        <span>Discount Amount (25%):</span>
+        <span>-{{ (total * 0.25) | number:'1.2-2' }} JOD</span>
+      </div>
+
+      <hr>
+
+      <!-- Total After Discount -->
+      <div class="price-line">
+        <span>Total After Discount:</span>
+        <span style="font-size: 1.3rem;">{{ (total * 0.75) | number:'1.2-2' }} <span style="font-size: 0.8rem;">JOD</span></span>
+      </div>
+
+      <!-- Checkout Button -->
+      <button class="btn btn-dark mt-3 w-100 fw-bold" style="border-radius:0;">
+        Checkout Now ({{ cartItems.length }})
+      </button>
+    </div>
+
+    <!-- Payment Methods Box -->
+    <div class="right-box">
+      <div class="payment-methods mt-3">
+        <p class="text-secondary" style="font-size: 0.8rem;">
+          <i class="fa-solid fa-circle-exclamation fa-s"></i> Item availability and pricing are not guaranteed until payment is final.
+        </p>
+        <i class="fa-solid fa-lock text-success"></i>
+        <span>You will not be charged until you review this order on the next page</span>
+        <i class="fa-solid fa-shield text-success mt-4"></i>
+        <span class="fw-bold">Safe Payment Options</span>
+        <p style="font-size: 0.8rem;">Temu is committed to protecting your payment information...</p>
+        <p>1. Payment methods</p>
+        <img src="assets/images/Payment methods.png" alt="Visa">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Product List Component: Light gray background -->
+<div class="product-list-container">
+  <app-product-list></app-product-list>
+</div>
+
+
+<!-- Product List Component: Light gray background -->
+<div class="contact-container">
+  <app-contact></app-contact>
+</div>

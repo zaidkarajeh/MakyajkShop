@@ -1,0 +1,27 @@
+<!-- Menu Component -->
+<app-menu-page></app-menu-page>
+
+<!-- Orders Container -->
+<div class="orders-container">
+  <h2 class="title">My Orders</h2>
+
+  <!-- Empty orders message -->
+  <div *ngIf="orders.length === 0" class="empty-orders">
+    <img src="assets/images/empty-orders.jpg" alt="No Orders">
+    <h3>No orders yet</h3>
+    <p>When you make a purchase, your orders will appear here.</p>
+    <button (click)="goShopping()">Go Shopping</button>
+  </div>
+
+  <!-- Orders list -->
+  <div *ngIf="orders.length > 0">
+    <div class="order-card" *ngFor="let order of orders">
+      <!-- Order info -->
+      <h4>Order #{{ order.id }}</h4>
+      <p>Date: {{ order.date | date }}</p>
+      <p>Total: ${{ order.total }}</p>
+      <p>Status: <span>{{ order.status }}</span></p>
+      <button (click)="viewOrder(order.id)">View Details</button>
+    </div>
+  </div>
+</div>

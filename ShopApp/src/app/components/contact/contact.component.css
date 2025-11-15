@@ -1,0 +1,155 @@
+/* =======================
+   Container Info Section
+   ======================= */
+.container-info {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+/* Info Boxes */
+.container-box {
+    border: 1px solid rgb(255, 255, 255);
+    height: 150px;
+    width: 300px;
+}
+
+/* Text inside Boxes */
+.container-text {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Text Box */
+.text {
+    width: 200px;
+    height: 50px;
+}
+
+/* Icons */
+.icon {
+    font-size: 50px;
+    padding-top: 20px;
+}
+.icon:hover {
+    color: red;
+}
+
+/* First Box Styling */
+.container-box:first-child {
+    background-color: rgb(249, 249, 249);
+    border-start-start-radius: 20px;
+}
+
+/* Second Box Styling */
+.container-box:nth-child(2) {
+    background-color: rgb(249, 249, 249);
+}
+
+/* Last Box Styling */
+.container-box:last-child {
+    background-color: rgb(249, 249, 249);
+    border-end-end-radius: 20px;
+}
+
+/* =======================
+   Main Container Section
+   ======================= */
+
+/* Main Flex Container */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    background-color: rgb(249, 249, 249);
+    margin-bottom: 0px;
+    flex-wrap: wrap;
+}
+
+/* Left Section */
+.left-section {
+    width: 45%;
+    height: 400px;
+}
+
+/* Right Section */
+.right-section {
+    width: 45%;
+    height: 250px; 
+    position: relative;
+    top: 50px;
+}
+
+/* Top Box Section */
+.top-box {
+    height: 190px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px;
+    justify-content: center;
+}
+
+/* Bottom Box Section */
+.bottom-box {
+    height: 190px;
+}
+
+/* Individual Box Item */
+.box {
+    height: 190px;
+    width: 25%;
+    text-align: center;
+}
+
+/* Box Text */
+.box p {
+    font-size: 0.65rem;
+    margin-bottom: 0px;
+}
+
+/* =======================
+   Responsive Design
+   ======================= */
+@media (max-width: 768px) {
+
+    /* Main Container becomes Column */
+    .main-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Sections Full Width */
+    .left-section,
+    .right-section {
+        width: 100%;
+    }
+
+    /* Top Box Adjustment */
+    .top-box {
+        justify-content: flex-start;
+        gap: 15px; /* تقل المسافة بين الصناديق على الشاشات الصغيرة */
+        flex-wrap: wrap;
+    }
+
+    /* Boxes inside Top Box Full Width on Small Screens */
+    .box {
+        width: 48%; /* أو 100% إذا تريد كل مربع تحت بعض */
+        margin-bottom: 15px;
+    }
+
+    /* Container Info Section Adjustments */
+    .container-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .container-box {
+        width: 90%; /* مناسب للشاشات الصغيرة */
+    }
+}

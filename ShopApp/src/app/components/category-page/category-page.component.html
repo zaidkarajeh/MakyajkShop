@@ -1,0 +1,62 @@
+<!-- Menu Component -->
+<app-menu-page></app-menu-page>
+
+<!-- Main Content -->
+<div class="main-content">
+
+  <!-- ✅ Categories Navigation: Filter products by category -->
+  <div class="categories-nav mb-4">
+    <button *ngFor="let cat of categories" 
+            (click)="goToCategory(cat)" 
+            [disabled]="cat === categoryName"
+            class="btn btn-light me-2 mb-2">
+      {{ cat }}
+    </button>
+  </div>
+
+  <!-- ✅ Products Grid: Display all products -->
+  <div class="products-container">
+    <div class="row row-cols-2 row-cols-md-6">
+      <div class="col" *ngFor="let product of products">
+        <div class="card fixed-card mt-4">
+          
+          <!-- Product Image: Hover effect & click for details -->
+          <a>
+            <img 
+              [src]="currentImages[product.id]" 
+              alt="{{product.name}}" 
+              class="card-img-top fixed-img"
+              (mouseenter)="startHover(product)" 
+              (mouseleave)="stopHover(product)"
+              (click)="goToDetails(product.id)"
+            >
+          </a>
+
+          <!-- Product Info: Description and price -->
+          <div class="card-body mb-0 p-0">
+            <p class="card-text single-line-description" (click)="goToDetails(product.id)">
+              {{ product.description }}
+            </p>
+
+            <div class="d-flex align-items-center justify-content-between" style="margin-top: 5px;">
+
+              <!-- Add to Cart Button -->
+              <div class="cart-wrapper">
+                <img src="assets/images/shopping-bag.png" alt="Add to Cart" (click)="addToCartnew(product)">
+              </div>
+
+              <!-- Product Price -->
+              <p class="mb-0">
+                <span class="fs-3 fw-bold">{{ product.price | number:'1.2-2' | slice:0:1 }}</span>
+                <span class="fs-6">.{{ product.price | number:'1.2-2' | slice:2 }} JOD</span>
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

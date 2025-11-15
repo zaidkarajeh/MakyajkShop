@@ -1,0 +1,117 @@
+<div class="details-container">
+  <!-- Main container for product details -->
+
+  <div class="main-content mb-4">
+    <!-- Main content area, could include menu or header -->
+    <app-menu-page></app-menu-page>
+  </div>
+
+  <div *ngIf="product" class="container mt-4">
+    <!-- Product container, only shown if 'product' exists -->
+
+    <div class="d-flex align-items-start justify-content-start mt-3">
+      <!-- Flex row: contains thumbnails, main carousel, and product info -->
+
+      <div class="thumbnails-column me-3">
+        <!-- Column for product thumbnail images -->
+        <img *ngFor="let img of product.imageUrls; let i = index"
+             [src]="img.startsWith('http') ? img : 'https://localhost:44333/images/' + img"
+             class="thumbnail-img mb-2"
+             (click)="setActiveSlide(i)">
+        <!-- Each thumbnail clickable to set active slide -->
+      </div>
+
+      <div id="productCarousel" class="carousel slide main-image" data-bs-ride="carousel">
+        <!-- Main product image carousel -->
+        <div class="carousel-inner">
+          <div *ngFor="let img of product.imageUrls; let i = index"
+               class="carousel-item"
+               [class.active]="i === activeSlideIndex">
+            <img [src]="img.startsWith('http') ? img : 'https://localhost:44333/images/' + img"
+                 class="d-block img-fluid rounded fixed-img"
+                 (error)="currentImage=fallbackImage">
+            <!-- Carousel image with fallback -->
+          </div>
+        </div>
+
+        <!-- Carousel controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev" (click)="prevSlide()">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next" (click)="nextSlide()">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="product-info ms-3">
+        <!-- Container for product textual information -->
+
+        <div class="deal-highlights font-sample raleway d-flex justify-content-between align-items-start">
+          <!-- Highlight banner for lightning deals -->
+          <div class="Lightning-text">
+            <h5 class="font-sample raleway">Lightning deal</h5>
+          </div>
+          <div class="Lightning-info">
+            <h6>🚚 Free Delivery on orders over 20 JOD</h6>
+          </div>
+        </div>
+
+        <h6>{{ product.name }}</h6>
+        <!-- Product name -->
+
+        <div class="description-wrapper">
+          <!-- Container for product description with expand/collapse -->
+          <span class="description-text" [class.expanded]="expanded">
+            {{ product.description }}
+          </span>
+          <i class="fa" [ngClass]="expanded ? 'fa-chevron-up' : 'fa-chevron-down'"
+             (click)="toggleText()"></i>
+          <!-- Toggle icon to expand/collapse description -->
+        </div>
+
+        <p class="mb-0 text-end">
+          <!-- Product price -->
+          <span>Price :</span>
+          <span class="fs-3 fw-bold">{{ product.price | number:'1.0-0' }}</span>
+          <span class="fs-6">.{{ (product.price % 1) * 100 | number:'2.0-0' }} JOD</span>
+        </p>
+
+        <div class="Lightning-deal">
+          <!-- Banner showing countdown for lightning deal -->
+          <h5 class="font-sample raleway">Lightning deal</h5>
+          <span class="countdown">End in 0{{ hours }} : {{ minutes }} : {{ seconds }}s</span>
+        </div>
+
+        <div class="deal-info font-sample raleway pt-1">
+          <!-- Additional product info like category, stock, rating -->
+          <p class="ms-2 mb-0"><strong>Category:</strong> {{ product.category }}</p>
+          <p class="ms-2 mb-0"><strong>Stock:</strong> {{ product.stock }}</p>
+          <p class="ms-2 mb-0 d-flex align-items-center">
+            <strong class="me-1">Rating:</strong>
+            <!-- Rating stars -->
+            <i class="fa fa-star text-warning"></i>
+            <i class="fa fa-star text-warning"></i>
+            <i class="fa fa-star text-warning"></i>
+            <i class="fa fa-star-half-alt text-warning"></i>
+            <i class="fa fa-star" style="color: transparent; -webkit-text-stroke: 1px #ffc107;"></i>
+            <span class="ms-2 text-muted">3.5 / 5</span>
+          </p>
+          <p class="ms-2 mb-0"><strong>Shipping:</strong> Free delivery in 2 days</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="button-add text-end">
+      <!-- Add to Cart button -->
+      <button class="btn" (click)="addToCartnew(product)">ADD TO CART</button>
+    </div>
+
+  </div>
+</div>
+<!-- Product List Component: Light gray background -->
+<div class="product-list-container">
+  <app-product-list></app-product-list>
+</div>

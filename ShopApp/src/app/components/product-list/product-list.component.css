@@ -1,0 +1,206 @@
+/* Product cards layout */
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Padding to offset fixed navbar */
+.main-content {
+  padding-top: 110px; /* same as menu height */
+}
+
+/* Row spacing and card alignment */
+.row {
+  width: 100%;
+  height: auto;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* Product image sizing */
+.fixed-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-fit: scale-down;
+}
+
+/* Remove border from cards */
+.fixed-card {
+  border: none;
+}
+
+/* Cart icon container style */
+.cart-wrapper {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  height: 30px;
+  width: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Cart icon image size */
+.cart-wrapper img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Make product images clickable */
+.card-img-top.fixed-img {
+  cursor: pointer;
+}
+
+/* Short description (ellipsis if too long) */
+.single-line-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  width: 90%;
+  display: block;
+}
+
+/* Hover underline for description */
+.card-text:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* "Show more" button area */
+.show-more-container {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+/* Generic button style */
+.text-center .btn {
+  width: 15%;
+  border: 1px solid black;
+  border-radius: 0;
+  cursor: pointer;
+  padding: 10px;
+  background: white;
+}
+
+/* Button hover effect */
+.text-center .btn:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Header (category titles) container */
+.headers-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Clickable text pointer */
+.clickable {
+  cursor: pointer;
+}
+
+/* Main section header (makeup, etc.) */
+.makeup-header {
+  font-family: 'Raleway', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 50px 0;
+}
+
+/* Hashtag before section title */
+.makeup-header .hash {
+  font-family: 'Brush Script MT', cursive;
+  color: #ff69b4;
+  display: inline-block;
+  margin-right: 8px;
+  animation: subtleBounce 1.2s infinite alternate;
+}
+
+/* Subtle bounce animation */
+@keyframes subtleBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* Hover gradient effect on hashtag */
+.makeup-header .hash:hover {
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+/* Alert message (top-right corner) */
+.alert {
+  position: fixed;
+  top: 150px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 0;
+}
+
+/* Card hover shadow */
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Empty product message image */
+.no-products-message img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60vh;
+  text-align: center;
+  margin: 20px;
+}
+
+/* Small screens responsive */
+@media (max-width: 992px) {
+  .row {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .fixed-img {
+    height: 200px;
+  }
+
+  .text-center .btn {
+    width: 40%;
+  }
+
+  .makeup-header {
+    font-size: 22px;
+    margin: 30px 0;
+  }
+
+  .products-container {
+    gap: 0.5rem;
+  }
+
+  .cart-wrapper {
+    height: 25px;
+    width: 35px;
+  }
+
+  .cart-wrapper img {
+    width: 18px;
+    height: 18px;
+  }
+}

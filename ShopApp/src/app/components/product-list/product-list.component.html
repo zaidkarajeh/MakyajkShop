@@ -1,0 +1,77 @@
+<!-- Main content -->
+<div class="main-content">
+    <app-menu-page></app-menu-page>
+</div>
+
+<!-- Headers (conditional) -->
+<div class="headers-container" *ngIf="showHeaders">
+  <h1 class="makeup-header">
+    <span class="hash">#</span>
+    <span class="clickable" (click)="goToProducts()">ALL PRODUCTS</span>
+  </h1>
+
+  <h1 class="makeup-header">
+    <span class="hash">🏆</span>BEST SELLERS
+  </h1>
+</div>
+
+<!-- Cart page header -->
+<h1 class="makeup-header" *ngIf="showMakeupHeader">
+  <span class="hash">#</span>YOU MIGHT LIKE TO FILL IT WITH
+</h1>
+
+<!-- Products grid -->
+<div class="products-container mb-4">
+  <div class="row row-cols-2 row-cols-md-6">
+    <div class="col" *ngFor="let product of products | slice:0:visibleProducts">
+      <div class="card fixed-card mt-4">
+        <!-- Product image -->
+        <a>
+          <img 
+            [src]="currentImages[product.id]" 
+            alt="{{product.name}}" 
+            class="card-img-top fixed-img"
+            (mouseenter)="startHover(product)" 
+            (mouseleave)="stopHover(product)"
+            (click)="goToDetails(product.id)"
+          >
+        </a>
+
+        <!-- Success message -->
+        <div *ngIf="successMessage" class="alert alert-success text-center">
+          {{ successMessage }}
+        </div>
+
+        <!-- Product info -->
+        <div class="card-body mb-0 p-0">
+          <p class="card-text single-line-description ms-2" (click)="goToDetails(product.id)">
+            {{ product.description }}
+          </p>
+
+          <div class="d-flex align-items-center justify-content-between" style="margin-top: 5px;">
+            <!-- Price -->
+            <p class="mb-0 ms-2">
+              <span class="fs-3 fw-bold">{{ product.price | number:'1.0-0' }}</span>
+              <span class="fs-6">.{{ (product.price % 1) * 100| number:'2.0-0' }} JOD</span>
+            </p>
+
+            <!-- Add to cart -->
+            <div class="cart-wrapper me-2">
+              <img src="assets/images/shopping-bag.png" alt="Add to Cart" (click)="addToCartnew(product)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Show More button -->
+<div class="text-center mt-5 mb-4" *ngIf="showMorebtn">
+  <button class="btn" (click)="showMore()">Show More</button>
+</div>
+
+<!-- No products message -->
+<div *ngIf="noProducts" class="no-products-message">
+  <img src="assets/images/product_not_found.png" alt="">
+</div>

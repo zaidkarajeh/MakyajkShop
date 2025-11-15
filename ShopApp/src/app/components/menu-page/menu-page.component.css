@@ -1,0 +1,282 @@
+/* Navbar wrapper - fixes navbar at top */
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+  height: 110px; /* navbar height */
+}
+.navbar-nav  {
+  cursor: pointer;
+}
+
+
+
+body, .main-content {
+  padding-top: 110px; /* same as navbar height */
+}
+
+/* Cart Dropdown - main container */
+.cart-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  width: 400px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+/* Cart Items - scrollable product list */
+.cart-items {
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-right: 4px;
+}
+
+/* Cart Footer - buttons at bottom */
+.cart-footer {
+  flex-shrink: 0;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Badge - number of items */
+.cart-badge {
+  position: absolute;
+  left: 30px;
+  bottom: 1px;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Cart Item - each product row */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  width: 100%;
+  flex-wrap: nowrap;
+  min-height: 90px;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+/* Product Image - fixed size */
+.product-image {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-img {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ccc;
+  display: block;
+  object-fit: scale-down;
+  flex-shrink: 0;
+}
+
+/* Text content - name, description */
+.card-body-text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  gap: 4px;
+  padding-right: 6px;
+  box-sizing: border-box;
+}
+
+.single-line-description {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.single-line-description:hover {
+  text-decoration: underline;
+}
+
+/* Quantity controls - adjust product quantity */
+.quantity-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.item-name {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Counter buttons - + / - */
+.btn-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #000;
+  border-radius: 16px;
+  padding: 0 6px;
+  width: 80px;
+  height: 28px;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.btn-group button {
+  background: transparent;
+  border: none;
+  padding: 0 6px;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Price and remove button */
+.remove-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.item-price {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.remove-item-btn {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  display: block;
+}
+
+/* Footer buttons - empty cart / view cart */
+.empty-cart-btn,
+.view-cart-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; 
+}
+
+/* Dropdown links color */
+.dropdown-menu a {
+  color: black; 
+}
+
+/* Hover effect for dropdown links */
+.dropdown-menu a:hover {
+  background-color: #000000;
+  color: white;
+}
+.user-icon{
+  font-size: 1.3rem
+}
+
+/* Responsive adjustments - extra small screens */
+@media (max-width: 420px) {
+  .cart-dropdown { width: 320px; }
+  .product-img { width: 64px; height: 64px; }
+  .cart-item { min-height: 72px; gap: 8px; padding: 4px; }
+  .btn-group { width: 70px; height: 26px; }
+}
+
+/* Responsive adjustments - small screens */
+@media (max-width: 767px) {
+  .search-form { width: 120px !important; }
+  .nav-item { margin-left: 5px; }
+}
+.account-menu {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.account-icon i {
+  font-size: 22px;
+}
+
+.account-dropdown {
+  position: absolute;
+  width: 180px;
+  top: 40px;
+  right: 80px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  z-index: 2000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.account-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.account-dropdown ul li {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.account-dropdown ul li span {
+  flex: 1;
+  text-align: left;
+}
+
+.account-dropdown ul li i {
+  font-size: 14px;
+  color: #000;
+}
+
+.account-dropdown ul li:hover {
+  background-color: #f5f5f5;
+}

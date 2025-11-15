@@ -1,0 +1,222 @@
+/* =========================
+   Navbar - Fixed at top
+========================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  z-index: 1050;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-text-left {
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.right-div img {
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================
+   Main content after Navbar
+========================= */
+.main-content {
+  margin-top: 180px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* =========================
+   Cart Left Section
+========================= */
+.cart-left {
+  width: 60%;
+}
+
+.cart-count-container {
+  padding: 10px 20px;
+  height: 50px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.cart-count span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.cart-item {
+  height: 175px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* =========================
+   Product Image & Details
+========================= */
+.product {
+  position: relative;
+  display: inline-block;
+}
+
+.product img {
+  width: 120px;
+  height: 120px;
+  object-fit: scale-down;
+  margin-left: 20px;
+  margin-top: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.product p {
+  position: absolute;
+  left: 25px;
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.product-details {
+  width: 300px;
+  margin-right: 10px;
+}
+
+.single-line-description {
+  display: block;
+  width: 90%; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.single-line-description:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   Quantity Buttons
+========================= */
+.btn-group {
+  border: 1px solid #000;
+  border-radius: 16px;
+  padding: 0 6px;
+  width: 80px;
+  height: 28px;
+  background: transparent;
+}
+
+.btn-group button {
+  background: transparent;
+  border: none;
+  padding: 0 6px;
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* =========================
+   Price Text & Remove Button
+========================= */
+.item-price {
+  font-size: 14px;
+  color: #000000;
+}
+
+.remove-item-btn {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================
+   Cart Right Section
+========================= */
+.cart-right {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-box {
+  padding: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.remove-controls img {
+  margin-top: 10px;
+}
+
+.price-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.price-line span:first-child {
+  text-align: left;
+}
+
+.price-line span:last-child {
+  text-align: right;
+  font-weight: bold;
+}
+
+/* =========================
+   Empty space between left & right
+========================= */
+.cart-space {
+  width: 2%;
+}
+
+/* =========================
+   Responsive Design
+========================= */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .cart-left, .cart-right, .cart-space {
+    width: 100%;
+  }
+
+  .cart-space {
+    display: none;
+  }
+
+  .cart-item,
+  .cart-count-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .product img {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    margin-top: 15px;
+  }
+
+  .btn-group {
+    width: 70px;
+    height: 25px;
+  }
+}

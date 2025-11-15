@@ -1,0 +1,42 @@
+/* Orders container */
+.orders-container {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+/* Page title */
+.title {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+/* Empty orders image */
+.empty-orders img {
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+/* Empty orders heading */
+.empty-orders h3 {
+  color: #333;
+}
+
+/* Empty orders description */
+.empty-orders p {
+  color: #777;
+}
+
+/* Button style */
+button {
+  background: #000000;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Button hover */
+.button:hover {
+  background: #5f5f5f;
+}

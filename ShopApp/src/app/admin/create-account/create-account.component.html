@@ -1,0 +1,70 @@
+<form [formGroup]="createForm" class="custom-login-form">
+
+  <h2 class="form-title">Create Account</h2>
+
+  <!-- Name -->
+  <div class="form-group">
+    <label for="name">Name</label>
+    <div class="input-wrapper">
+      <i class="fa-solid fa-user icon"></i>
+      <input id="name" type="text" formControlName="txtname" placeholder="Enter your name">
+    </div>
+    <div *ngIf="createForm.controls['txtname'].touched && createForm.hasError('required','txtname')" class="error">
+      Please enter your name
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <label for="email">Email</label>
+    <div class="input-wrapper">
+      <i class="fa-solid fa-envelope icon"></i>
+      <input id="email" type="email" formControlName="txtEmail" placeholder="Enter your email">
+    </div>
+    <div *ngIf="createForm.controls['txtEmail'].touched && createForm.hasError('required','txtEmail')" class="error">
+      Please enter your email
+    </div>
+    <div *ngIf="createForm.controls['txtEmail'].touched && createForm.hasError('email','txtEmail')" class="error">
+      Please enter a valid email
+    </div>
+  </div>
+
+  <!-- Date of Birth -->
+  <div class="form-group">
+    <label for="dob">Date of Birth</label>
+    <div class="input-wrapper">
+      <i class="fa-solid fa-calendar icon"></i>
+      <input id="dob" type="date" formControlName="txtDOB">
+    </div>
+    <div *ngIf="createForm.controls['txtDOB'].touched && createForm.hasError('required','txtDOB')" class="error">
+      Please enter your date of birth
+    </div>
+  </div>
+
+  <!-- Password -->
+<div class="form-group">
+  <label for="userPassword">Password</label>
+  <div class="input-wrapper password-wrapper">
+    <i class="fa-solid fa-lock password-icon"></i>
+    <input [type]="showUserPassword ? 'text' : 'password'" id="userPassword" formControlName="txtPassword" placeholder="Enter your password">
+    <i class="fa-solid fa-eye password-toggle-icon" (click)="toggleUserPassword()"></i>
+  </div>
+  <div *ngIf="createForm.controls['txtPassword'].touched && createForm.controls['txtPassword'].hasError('required')" class="error">
+    Please enter your password
+  </div>
+  <div *ngIf="createForm.controls['txtPassword'].touched && createForm.controls['txtPassword'].hasError('pattern')" class="error">
+  Password must be at least 8 characters, with at least 1 uppercase, 1 lowercase, 1 number, and 1 special character
+</div>
+
+</div>
+
+
+  
+
+  <!-- Save Button -->
+  <button type="button" class="btn-login" (click)="createAccount()">Register</button>
+<div class="text-center mt-3" >
+    <a class="text-decoration-none"  style="cursor: pointer;" (click)="goToLogin()">Login</a>
+  </div>
+
+</form>

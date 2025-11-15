@@ -1,0 +1,27 @@
+<!-- Menu Component -->
+<app-menu-page></app-menu-page>
+
+
+<form [formGroup]="roleForm" class="custom-login-form">
+
+  <h2 class="form-title">Roles</h2>
+
+  <!-- Role Name -->
+  <div class="form-group">
+    <label for="txtname">Name</label>
+    <div class="input-wrapper">
+      <i class="fa-solid fa-user icon"></i>
+      <input id="txtname" 
+             type="text" 
+             formControlName="txtname" 
+             placeholder="Enter your Role">
+    </div>
+    <div *ngIf="roleForm.controls['txtname'].touched && roleForm.controls['txtname'].hasError('required')" class="error">
+      Please enter your Role
+    </div>
+  </div>
+
+  <!-- Add Button -->
+  <button type="button" class="btn-login" (click)="Save()">Add</button>
+
+</form>

@@ -1,0 +1,71 @@
+<!-- Menu Component -->
+<app-menu-page></app-menu-page>
+
+
+<!-- Page header with title, search, and add button -->
+<div class="page-title d-flex flex-column align-items-center" style="width: 100%; padding-top: 120px;">
+
+  <!-- Page title -->
+  <h1 class="text-center mb-3" style="margin: 0;">Product List</h1>
+
+  <!-- Search form and Add Product button -->
+  <div class="d-flex gap-2 mb-2">
+    <form (ngSubmit)="onSearch()" class="d-flex gap-2">
+      <input class="form-control" type="search" placeholder="Search" [(ngModel)]="searchText" name="search" />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
+    <button type="button" class="btn btn-outline-primary" [routerLink]="['/admin/addproduct']">
+      Add Product
+    </button>
+  </div>
+
+  <!-- Category menu -->
+  <div class="categories-menu d-flex flex-wrap gap-2 mb-3">
+    <button class="btn btn-outline-secondary"
+            *ngFor="let cat of categories"
+            [class.active]="cat === selectedCategory"
+            (click)="filterByCategory(cat)">
+      {{ cat }}
+    </button>
+    <button class="btn btn-outline-secondary"
+            [class.active]="!selectedCategory"
+            (click)="filterByCategory('')">
+      All
+    </button>
+  </div>
+</div>
+
+<!-- Products table -->
+<div class="form-table">
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Stock</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filteredProducts">
+        <td class="text-center">
+          <img *ngIf="item.imageUrls && item.imageUrls.length > 0"
+               [src]="item.imageUrls[0].startsWith('http') ? item.imageUrls[0] : 'https://localhost:44333/images/' + item.imageUrls[0]" 
+               alt="{{item.name}}" 
+               class="product-img">
+        </td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.category }}</td>
+        <td>{{ item.stock }}</td>
+        <td>
+          <i class="fa-solid fa-trash text-danger" (click)="Delete(item.id)"></i>
+          <i class="fa-solid fa-pen-to-square text-success" (click)="editProduct(item.id)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

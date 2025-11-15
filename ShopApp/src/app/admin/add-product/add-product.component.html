@@ -1,0 +1,129 @@
+<!-- Menu Component -->
+<app-menu-page></app-menu-page>
+<!-- Page header: Title and navigation button -->
+<div class="page-title d-flex flex-column align-items-center" style="width: 100%; padding-top: 120px;">
+
+  <!-- Page title -->
+  <h1 class="text-center mb-3" style="margin: 0;">Product Add</h1>
+
+  <!-- Button to navigate to product list page -->
+  <button type="button" class="btn btn-outline-primary" [routerLink]="['/admin/listproducts']">
+    List Product
+  </button>
+</div>
+
+<!-- Product form (Add/Edit) -->
+<form [formGroup]="productForm">
+
+  <!-- Container for form fields -->
+  <div class="form-container">
+
+    <!-- Product Name -->
+    <div class="description-group">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" name="Name" formControlName="txtname">
+      <span *ngIf="productForm.controls['txtname'].touched && productForm.hasError('required','txtname')">
+        Please enter the product name
+      </span>
+    </div>
+
+    <!-- Product Description -->
+    <div class="description-group">
+      <label class="form-label">Description</label>
+      <input type="text" class="form-control" name="Description" formControlName="txtdescription">
+      <span *ngIf="productForm.controls['txtdescription'].touched && productForm.hasError('required','txtdescription')">
+        Please enter the product description
+      </span>
+    </div> 
+
+    <!-- Product Price -->
+    <div class="description-group">
+      <label class="form-label">Price</label>
+      <input type="text" class="form-control" name="Price" formControlName="txtprice">
+      <span *ngIf="productForm.controls['txtprice'].touched && productForm.hasError('required','txtprice')">
+        Please enter the product price
+      </span>
+    </div>
+
+    <!-- Product Stock -->
+    <div class="description-group">
+      <label class="form-label">Stock</label>
+      <input type="text" class="form-control" name="Stock" formControlName="txtstock">
+      <span *ngIf="productForm.controls['txtstock'].touched && productForm.hasError('required','txtstock')">
+        Please enter the stock quantity
+      </span>
+    </div>
+
+    <!-- Category selection -->
+    <div class="description-group">
+      <label class="form-label">Category</label>
+      <select class="form-select" formControlName="txtcategory">
+        <option value="">Select Category</option>
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+      <span *ngIf="productForm.controls['txtcategory'].touched && productForm.controls['txtcategory'].hasError('required')" class="text-danger">
+        Please select a category
+      </span>
+    </div>
+
+    <!-- Product Images Upload -->
+    <div class="upload-group">
+      <label for="fileInput" class="btn btn-secondary">Images</label>
+      <input id="fileInput" type="file" multiple (change)="onFilesSelected($event)" accept="image/*" hidden />
+      <span *ngIf="selectedFiles.length === 0 && productForm.touched" class="text-danger">
+        Please select product images
+      </span>
+      <div *ngIf="selectedFileNames.length > 0">
+        Selected Images: {{ selectedFileNames.length }}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Old images display (Edit mode) -->
+  <div *ngIf="oldImages.length > 0" class="mt-3">
+    <h5>Current Images:</h5>
+    <div class="d-flex flex-wrap gap-3">
+      <div *ngFor="let img of oldImages; let i = index" class="position-relative">
+        <img [src]="img.startsWith('http') ? img : 'https://localhost:44333/images/' + img"
+             alt="Product Image"
+             class="img-thumbnail"
+             style="width: 100px; height: 100px; object-fit: cover;">
+        <button type="button"
+                class="btn btn-sm btn-danger position-absolute top-0 end-0"
+                (click)="removeOldImage(i)">
+          ×
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New images preview -->
+  <div *ngIf="selectedFiles.length > 0" class="mt-3">
+    <h5>New Images:</h5>
+    <div class="d-flex flex-wrap gap-3">
+      <div *ngFor="let file of selectedFiles; let i = index" class="position-relative">
+        <img [src]="filePreview(file)"
+             alt="Preview"
+             class="img-thumbnail"
+             style="width: 100px; height: 100px; object-fit: cover;">
+        <button type="button"
+                class="btn btn-sm btn-danger position-absolute top-0 end-0"
+                (click)="removeNewFile(i)">
+          ×
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form action buttons -->
+  <div class="button-group">
+    <button *ngIf="!isEditMode" type="button" class="btn btn-primary" (click)="Save()">
+      Save
+    </button>
+    <button *ngIf="isEditMode" type="button" class="btn btn-success" (click)="Update()">
+      Update
+    </button>
+  </div>
+
+</form>

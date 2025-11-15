@@ -1,0 +1,170 @@
+/* ==========================
+   Table container
+   ========================== */
+.form-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px; 
+}
+
+.table {
+  width: 80%;
+}
+
+/* ==========================
+   Clickable icons (Font Awesome)
+   ========================== */
+.fa-solid {
+  cursor: pointer;
+  font-size: 25px;
+  margin-top: 20px;
+  transition: transform 0.2s;
+}
+
+.fa-solid:hover {
+  transform: scale(1.1);
+}
+
+/* ==========================
+   Product images
+   ========================== */
+/* Small images inside table */
+.product-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin: auto;
+}
+
+/* Images inside product cards */
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Fixed images for card layout */
+.fixed-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+/* Cart icon */
+.cart-wrapper img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
+
+/* ==========================
+   Product grid layout
+   ========================== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* ==========================
+   Product card styling
+   ========================== */
+.product-card {
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  background-color: rgba(255,255,255,0.15);
+  cursor: pointer;
+}
+
+.product-card h3,
+.product-card p {
+  color: white;
+  margin: 5px 0;
+}
+
+/* Buttons inside product card */
+.product-card button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(0,68,255,0.8);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  background-color: rgb(51,110,246);
+}
+
+/* ==========================
+   Row wrapper
+   ========================== */
+.row {
+  width: 100%;  
+  height: 340px; 
+  padding-left: 60px; 
+  padding-right: 60px;
+}
+
+/* ==========================
+   Fixed card wrapper
+   ========================== */
+.fixed-card {
+  border: none;
+}
+
+/* ==========================
+   Cart wrapper
+   ========================== */
+.cart-wrapper {
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 30px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* ==========================
+   Menu buttons
+   ========================== */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.menu-item {
+  background-color: #f8f9fa;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background-color: #0d6efd;
+  color: white;
+}

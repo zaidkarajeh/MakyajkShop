@@ -1,0 +1,185 @@
+<!-- Navbar Wrapper - contains both navbars -->
+<div class="navbar-wrapper">
+
+  <!-- Top Navbar - main navigation links -->
+  <nav class="navbar navbar-expand-lg px-3 colorful-shadow" style="background-color: black;">
+    <div class="container-fluid">
+      <!-- Brand -->
+      <a class="navbar-brand" style="color: white; cursor: pointer;" (click)="goHome()">MAKYAJK</a>
+
+      <!-- Toggler for mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" 
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" style="color: white;" (click)="goHome()"  (click)="scrollToSection('home')" >Home</a></li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+           Categories
+          </a>
+          <ul class="dropdown-menu" style="color: white;">
+            <li><a class="dropdown-item"  (click)="goToCategory('Hair care')">Hair Care</a></li>
+            <li><a class="dropdown-item" (click)="goToCategory('Skin care')">skin Care</a></li>
+            <li><a class="dropdown-item" (click)="goToCategory('Body care')">Body Care</a></li>
+            <li><a class="dropdown-item" (click)="goToCategory('Nail care')">Nail Cars</a></li>
+            <li><a class="dropdown-item"(click)="goToCategory('Cosmetics')">Cosmetics</a></li>
+            
+          </ul>
+        </li>
+          <li class="nav-item"><a class="nav-link" style="color: white;"(click)="goProducts()">Products</a></li>
+          <li class="nav-item"><a class="nav-link" style="color: white;" (click)="scrollToSection('contact')">Contact</a></li>
+         <li *ngIf="menuIsAdmin()" class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+   Admin
+  </a>
+  <ul class="dropdown-menu" style="color: white;">
+    <li><a class="dropdown-item" (click)="goAddRoles()">Add Roles</a></li>
+    <li><a class="dropdown-item" (click)="goAddProduct()">Add Products</a></li>
+    <li><a class="dropdown-item" (click)="goListProduct()">List Products</a></li>
+  </ul>
+</li>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Bottom Navbar - logo, search and cart -->
+  <nav class="navbar px-3" style="background-color: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div class="container-fluid">
+    
+      <!-- Search Form -->
+      <form class="search-form d-flex mx-auto" style="width: 250px;" role="search" (ngSubmit)="onSearch()">
+        <div class="input-group">
+          <input type="search" class="form-control" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" name="search">
+          <button class="btn" type="submit" style="background-color: black; color: white;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </form> 
+       <!-- user-menu.component.html -->
+<!-- account-menu.component.html -->
+<div class="account-container" 
+     (mouseenter)="openDropdown()" 
+     (mouseleave)="closeDropdown()">
+
+  <div class="account-menu">
+    <div class="account-icon">
+      <i class="fa-solid fa-user"></i>
+    </div>
+  </div>
+
+  <div class="account-dropdown" *ngIf="dropdownOpen">
+    <ul>
+      <li *ngIf="!isLoggedIn" (click)="goLogin()">
+        <span>Sign In / Register</span>
+        <i class="fa-solid fa-right-to-bracket"></i>
+      </li>
+
+      <li *ngIf="isLoggedIn" (click)="goOrders()">
+        <span>My Orders</span>
+        <i class="fa-solid fa-box"></i>
+      </li>
+
+      <li *ngIf="isLoggedIn" (click)="logout()">
+        <span>Logout</span>
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+
+      <!-- Cart Container -->
+<div class="cart-container position-relative ms-3" 
+     (mouseenter)="openCart()" 
+     (mouseleave)="closeCart()">
+
+  <!-- Cart Icon -->
+  <i class="fa-solid fa-cart-shopping" 
+     style="font-size: 1.3rem; cursor: pointer; margin-right: 10px;">
+  </i>
+
+  <!-- Cart Badge -->
+  <span *ngIf="cartItems.length > 0" class="cart-badge fs-7">
+    {{ getCartCount() }}
+  </span>
+
+  <!-- Cart Dropdown -->
+  <div *ngIf="showCart" class="cart-dropdown">
+    <!-- Dropdown Title -->
+    <h6 style="font-size: 1rem; font-weight: bold; margin-bottom: 10px;">Your Cart</h6>
+    <hr>
+
+    <!-- Scrollable Products -->
+    <div class="cart-items">
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <!-- Product Image -->
+        <div class="product-image">
+          <img class="product-img"
+               *ngIf="item.imageUrls && item.imageUrls.length > 0"
+               [src]="item.imageUrls[0].startsWith('http') ? item.imageUrls[0] : 'https://localhost:44333/images/' + item.imageUrls[0]"
+               alt="{{item.name}}">
+        </div>
+
+        <!-- Product Info -->
+        <div class="card-body-text mt-0">
+          <!-- Description -->
+          <p class="single-line-description" (click)="goToDetails(item.id)">
+            {{ item.description }}
+          </p>
+
+          <!-- Name + Quantity Controls -->
+          <div class="quantity-controls d-flex align-items-center justify-content-between">
+            <p class="item-name">{{ item.name }}</p>
+            <div class="btn-group d-flex align-items-center text-center">
+              <button class="btn" (click)="decreaseQuantity(item)">−</button>
+              <span class="fw-bold mx-1">{{ item.quantity }}</span>
+              <button class="btn" (click)="increaseQuantity(item)">+</button>
+            </div>
+          </div>
+
+          <!-- Price + Remove Button -->
+          <div class="remove-controls d-flex align-items-center justify-content-between">
+            <p class="item-price">
+              <span>{{ item.price | number:'1.0-0' }}</span>
+              <span>.{{ (item.price % 1) * 100 | number:'2.0-0' }} JOD</span>
+            </p>
+            <img src="assets/images/deleteitem.png"
+                 alt="Remove item"
+                 class="remove-item-btn"
+                 (click)="removeItem(item.id)"
+                 style="cursor:pointer; width:15px; height:15px;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="cart-footer">
+      <div class="text-end">
+        <strong>
+          <span style="font-size: 0.7rem;">Total:</span>
+          <span style="font-size: 1.3rem;"> {{ total }} JOD</span>
+        </strong>
+      </div>
+      <button class="empty-cart-btn" (click)="clearCart()">Empty The Basket</button>
+      <button class="view-cart-btn" (click)="goToInfoCart()">View Shopping Cart ({{ cartItems.length }})</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+    </div>
+  </nav>
+
+</div>

@@ -1,0 +1,275 @@
+/* Container Layout */
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Main Content Padding */
+.main-content {
+  width: 100%;
+  padding-top: 110px; /* Same as menu height */
+}
+
+/* Fixed Image Style */
+.fixed-img {
+  width: 700px;
+  height: 500px;
+  object-fit: scale-down;
+  display: block;
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon,
+.carousel-indicators button {
+  filter: invert(1);
+}
+
+/* Thumbnails Column */
+.thumbnails-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+}
+
+/* Thumbnail Image Style */
+.thumbnail-img {
+  width: 60px;
+  height: 80px;
+  object-fit: scale-down;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.thumbnail-img:hover {
+  transform: scale(1.1);
+  border: 1px solid black;
+  box-shadow: inset 0 0 0px rgba(255, 255, 255, 1);
+}
+
+/* Product Info Box */
+.product-info {
+  max-width: 850px;
+}
+
+/* Main Image Container */
+.main-image {
+  flex-shrink: 0;
+  width: 700px;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Text Alignment */
+.text-center {
+  display: flex;
+  justify-content: flex-start;
+  top: 200px;
+}
+
+/* Add Button Style */
+.button-add .btn {
+  width: 200px;
+  color: white;
+  border-radius: 0;
+  font-weight: bold; 
+  cursor: pointer;
+  padding: 10px;
+  background: rgb(0, 0, 0);
+  position: absolute;
+  top: 625px;
+  right: 100px;
+}
+
+/* Images Inside Main or Carousel */
+.main-image img,
+.carousel-item img {
+  object-fit: contain;
+  display: block;
+}
+
+/* Description Wrapper */
+.description-wrapper {
+  display: flex;
+  align-items: flex-start;
+  max-width: 800px;
+  cursor: pointer;
+}
+
+/* Description Text */
+.description-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  line-height: 1.5rem;
+  font-size: 16px;
+  flex: 1;
+  transition: max-height 0.3s ease;
+}
+
+.description-text.expanded {
+  -webkit-line-clamp: unset;
+}
+
+/* Description Arrow */
+.description-wrapper i {
+  font-size: 16px;
+  margin-left: 5px;
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+/* Deal Info Box */
+.deal-info {
+  border-right: 5px solid black;  
+  border-bottom: 5px solid black;  
+  border-left: 5px solid black;  
+  color: rgb(0, 0, 0);
+  height: 120px;
+  width: auto;
+}
+
+/* Lightning Deal Banner */
+.Lightning-deal {
+  background-color: black;
+  color: white;
+  height: 40px;
+  width: auto;
+  margin-top: 20px;
+  text-align: start;
+  align-items: center;
+  padding-left: 10px;
+  padding-top: 5px;
+  display: flex;
+  gap: 10px;
+  font-weight: bold;
+  border-top: 10px solid;
+  border-image: linear-gradient(to right, #ffb6c1, #a96ee0, #b674ac) 1;
+  font-style: italic;
+}
+
+/* Countdown Timer */
+.countdown {
+  color: linear-gradient(to right, #ffb6c1, #a96ee0, #b674ac) 1;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 5px;
+  background: linear-gradient(to right, #ffb6c1, #a96ee0, #b674ac);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Deal Highlights Banner */
+.deal-highlights {
+  background: linear-gradient(to right, #ffb6c1, #a96ee0, #b674ac);
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+/* Lightning Text */
+.Lightning-text {
+  background: linear-gradient(135deg, #ffb6c1, #d7aade, #ff00d9);
+  color: white;
+  font-style: italic;
+  padding: 10px 30px;
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  border-bottom-right-radius: 10px;  
+  clip-path: polygon(0 0, 80% 0, 100% 100%, 100% 100%, 0% 100%, 0 100%);
+}
+
+/* Lightning Info Container */
+.Lightning-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  padding-right: 20px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1024px) {
+
+  /* Stack main container vertically */
+  .details-container {
+    flex-direction: column !important;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Wrap inner flex items on small screens */
+  .details-container > .container > .d-flex {
+    flex-direction: row !important;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Thumbnails column layout */
+  .thumbnails-column {
+    flex-direction: column !important;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  /* Main image responsiveness */
+  .main-image {
+    flex: 1;
+    max-width: 700px;
+  }
+
+  /* Make main images full width */
+  .main-image img,
+  .fixed-img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Product info full width */
+  .product-info {
+    width: 100% !important;
+    max-width: 700px;
+  }
+
+  /* Add-to-cart button adjustments */
+  .button-add .btn {
+    position: static !important;
+    width: 100%;
+    margin: 10px 0 20px 0;
+  }
+
+  /* Stack description vertically */
+  .description-wrapper {
+    flex-direction: column !important;
+    width: 100%;
+  }
+
+  /* Arrow alignment for description */
+  .description-wrapper i {
+    align-self: flex-start;
+    margin-top: 5px;
+  }
+
+  /* Banners and deal info full width */
+  .deal-info,
+  .Lightning-deal,
+  .deal-highlights,
+  .Lightning-text,
+  .Lightning-info {
+    width: 95% !important;
+    box-sizing: border-box;
+  }
+}
+

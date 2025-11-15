@@ -1,0 +1,141 @@
+/* Login form container */
+.custom-login-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Form title */
+.form-title {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 28px;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label */
+label {
+  display: block;
+  margin-bottom: 1px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Input wrapper */
+.input-wrapper {
+  position: relative;
+}
+
+/* Input icon */
+.input-wrapper .icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 18px;
+}
+
+/* Text, email, password, date inputs and select */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select.form-select {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+/* Input focus */
+input:focus,
+select:focus {
+  border-color: #000000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Error message */
+.error {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Login button */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #000000;
+  color: white;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Login button hover */
+.btn-login:hover {
+  background-color: #2e2e2e;
+}
+
+/* Password wrapper */
+.password-wrapper {
+  position: relative;
+}
+
+/* Password input */
+.password-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 40px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Password input focus */
+.password-wrapper input:focus {
+  border-color: #000000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Password icon */
+.password-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+/* Password toggle icon */
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+}
+
+/* Text button */
+.text-button {
+  color: #007bff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Text button hover */
+.text-button:hover {
+  text-decoration: underline;
+}
