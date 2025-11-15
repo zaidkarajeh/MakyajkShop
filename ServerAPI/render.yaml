@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: makyajk-api
+    env: dotnet
+    rootDir: Webnew
+    buildCommand: dotnet publish -c Release -o publish
+    startCommand: dotnet ./publish/Webnew.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
